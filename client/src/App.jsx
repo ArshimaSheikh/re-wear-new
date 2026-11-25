@@ -8,7 +8,7 @@ const DEMO_PROPOSALS = [
   {id:"tailor-2",tailor:"The Stitch Room",specialty:"Upcycling & alterations",price:1100,days:10,note:"Can create a skirt and cropped top if the fabric length permits.",rating:"4.8"},
   {id:"tailor-3",tailor:"Needle & Thread",specialty:"Contemporary tailoring",price:1750,days:6,note:"Can make a two-piece set with a concealed side zip.",rating:"4.9"}
 ];
-let demoListings = [...DEMO_LISTINGS];
+let demoListings = [];
 let demoRequests = [];
 async function api(path, options = {}) {
   const method = options.method || "GET";
@@ -70,6 +70,7 @@ const DEMO_LISTINGS=[
 {id:"d4",title:"Ivory occasion saree",category:"Saree",size:"Free",condition:"Very good",price:0,type:"exchange",image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=900&q=85"},
 {id:"d5",title:"Classic denim jacket",category:"Jacket",size:"L",condition:"Very good",price:1450,type:"resell",image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=900&q=85"},
 {id:"d6",title:"Floral summer dress",category:"Dress",size:"S",condition:"Like new",price:990,type:"exchange",image:"https://images.unsplash.com/photo-1495385794356-15371f348c31?w=900&q=85"}];
+demoListings = [...DEMO_LISTINGS];
 const DEMO_REVERSIBLE=[
 {id:"rv1",title:"Reversible everyday jacket",tag:"2 SIDES · 2 MOODS",detail:"A neutral side for everyday wear and a bold printed side for colour.",image:"https://images.unsplash.com/photo-1548624149-f3f8a4a5b1c7?w=900&q=85"},
 {id:"rv2",title:"Wrap-to-skirt set",tag:"CONVERTIBLE",detail:"A wrap layer styled as a skirt, dress layer or scarf.",image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=85"},
