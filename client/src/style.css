@@ -32,3 +32,49 @@
 .repair-menu-item small{font-size:9px;color:var(--muted)}
 @media(max-width:780px){.recreate-look-grid{grid-template-columns:1fr 1fr}.repair-menu-grid{grid-template-columns:1fr 1fr}.demo-strip{align-items:flex-start;gap:8px;flex-direction:column}}
 @media(max-width:480px){.recreate-look-grid,.repair-menu-grid{grid-template-columns:1fr}.look-card>img{height:240px}}
+
+
+/* RE:WEAR marketplace refresh */
+.cart-button{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:transparent;padding:11px 13px;font-size:9px;letter-spacing:1px}
+.cart-button b{display:grid;place-items:center;width:19px;height:19px;background:var(--green);color:white;border-radius:50%;font-size:9px}
+.listing-desc{font-size:10px;line-height:1.55;color:var(--muted);min-height:30px;margin:-5px 0 13px}
+.product-grid{align-items:start}
+.source-switch,.style-selector{display:flex;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:26px}
+.source-switch button,.style-selector button{background:transparent;border:1px solid var(--line);padding:11px 14px;font-size:9px;letter-spacing:.8px}
+.source-switch button.selected,.style-selector button.selected{background:var(--green);border-color:var(--green);color:white}
+.source-heading{display:flex;justify-content:space-between;align-items:center;margin:30px 0 22px}
+.source-heading h2,.user-style-panel h2{font:500 clamp(27px,3vw,38px) var(--serif);margin:9px 0 0}
+.source-form{margin-bottom:25px}
+.style-feature{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;background:#e9e7dd;padding:24px}
+.style-base{position:relative;min-height:490px}
+.style-base img{width:100%;height:100%;position:absolute;inset:0}
+.style-base>span{position:absolute;left:14px;top:14px;background:var(--paper);padding:9px 12px;font-size:8px;letter-spacing:1px}
+.style-base h2{position:absolute;bottom:12px;left:12px;background:var(--paper);padding:13px 17px;font:500 25px var(--serif);margin:0}
+.style-looks{padding:10px 0}
+.style-look-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.style-look{background:var(--white)}
+.style-look img{width:100%;height:250px}
+.style-look>div{padding:12px}
+.style-look small{font-size:8px;color:var(--green);letter-spacing:1px}
+.style-look h3{font:500 17px var(--serif);margin:6px 0}
+.user-style-panel{display:grid;grid-template-columns:1fr 1fr;gap:35px;margin-top:35px;padding:30px;background:#e9e7dd;align-items:start}
+.user-style-panel p{font-size:11px;line-height:1.7;color:var(--muted);margin-top:12px}
+.user-style-input{display:grid;grid-template-columns:1fr;gap:14px}
+.user-style-input .upload{min-height:130px}
+.result-thumb{height:115px;margin-top:10px}
+.result-thumb img{width:100%;height:100%}
+.cart-list{display:flex;flex-direction:column;gap:12px}
+.cart-row{display:flex;align-items:center;gap:18px;background:var(--white);padding:14px}
+.cart-row>img{width:95px;height:115px}
+.cart-detail{flex:1}
+.cart-detail h3{font:500 19px var(--serif);margin:0 0 5px}
+.cart-detail p{font-size:10px;color:var(--muted);margin:0 0 9px}
+.cart-total{display:flex;justify-content:space-between;align-items:center;padding:20px 0;margin-top:20px;border-top:1px solid var(--line);font-size:10px;letter-spacing:1px}
+.cart-total strong{font-size:18px;letter-spacing:0}
+.modal-backdrop{position:fixed;inset:0;background:#101610a8;z-index:50;display:grid;place-items:center;padding:20px}
+.modal-card{position:relative;background:var(--paper);width:min(100%,520px);padding:32px}
+.modal-card h2{font:500 30px var(--serif);margin:12px 0}
+.modal-card p{font-size:11px;line-height:1.7;color:var(--muted)}
+.modal-close{position:absolute;right:16px;top:16px;border:0;background:transparent}
+@media(max-width:780px){.cart-button{padding:9px;font-size:8px}.style-feature,.user-style-panel{grid-template-columns:1fr}.style-base{min-height:380px}.style-look img{height:190px}.source-heading{align-items:flex-start;gap:15px;flex-direction:column}}
+@media(max-width:480px){.cart-button{gap:4px}.style-look-grid{grid-template-columns:1fr 1fr}.style-look img{height:160px}.cart-row{gap:10px;flex-wrap:wrap}.cart-row>img{width:76px;height:92px}.cart-detail h3{font-size:16px}.cart-row .outline-button{margin-left:auto}.modal-card{padding:24px}.source-switch button,.style-selector button{font-size:8px}}
