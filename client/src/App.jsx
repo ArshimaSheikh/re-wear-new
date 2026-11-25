@@ -3,11 +3,49 @@ import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Check, Heart, Leaf
 
 const API = "/api";
 const fallback = "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=85";
+const DEMO_PROPOSALS = [
+  {id:"tailor-1",tailor:"Mira's Studio",specialty:"Dresses & occasion wear",price:1400,days:7,note:"A co-ord set is feasible. We recommend keeping the original neckline detail.",rating:"4.9"},
+  {id:"tailor-2",tailor:"The Stitch Room",specialty:"Upcycling & alterations",price:1100,days:10,note:"Can create a skirt and cropped top if the fabric length permits.",rating:"4.8"},
+  {id:"tailor-3",tailor:"Needle & Thread",specialty:"Contemporary tailoring",price:1750,days:6,note:"Can make a two-piece set with a concealed side zip.",rating:"4.9"}
+];
+let demoListings = [...DEMO_LISTINGS];
+let demoRequests = [];
 async function api(path, options = {}) {
-  const res = await fetch(`${API}${path}`, { headers: { "Content-Type": "application/json" }, ...options });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || "Something went wrong");
-  return data;
+  const method = options.method || "GET";
+  const body = options.body ? JSON.parse(options.body) : {};
+  await new Promise(resolve => setTimeout(resolve, 250));
+  if (path === "/listings" && method === "GET") return [...demoListings];
+  if (path === "/reversible" && method === "GET") return [...DEMO_REVERSIBLE];
+  if (path.startsWith("/ideas") && method === "GET") {
+    const garment = new URLSearchParams(path.split("?")[1] || "").get("garment") || "Other";
+    return {garment,ideas:DEMO_IDEAS[garment] || DEMO_IDEAS.Other};
+  }
+  if (path === "/listings" && method === "POST") {
+    if (!body.title?.trim()) throw new Error("Please add a title for your item.");
+    const item = {...body,id:"user-"+Date.now(),createdAt:new Date().toISOString()};
+    demoListings = [item,...demoListings];
+    return item;
+  }
+  if (path === "/exchange-requests" && method === "POST") {
+    const listing = demoListings.find(item => item.id === body.listingId && item.type === "exchange");
+    if (!listing) throw new Error("This swap listing is no longer available.");
+    const request = {id:"swap-"+Date.now(),listingId:listing.id,title:listing.title,status:"Swap request sent"};
+    demoRequests.push(request);
+    return request;
+  }
+  if (path === "/tailor-requests" && method === "POST") {
+    if (!body.idea) throw new Error("Choose a design idea first.");
+    const request = {...body,id:"create-"+Date.now(),status:"Awaiting tailor proposals"};
+    demoRequests.push(request);
+    return {request,proposals:DEMO_PROPOSALS};
+  }
+  if (path === "/repairs" && method === "POST") {
+    if (!body.garment || !body.issue) throw new Error("Please choose a garment and describe the repair.");
+    const repair = {...body,id:"repair-"+Date.now(),status:"Repair request received"};
+    demoRequests.push(repair);
+    return {repair,tailors:DEMO_PROPOSALS.slice(0,2).map(p=>({...p,price:Math.max(250,Math.round(p.price*.35))}))};
+  }
+  throw new Error("This demo action is not available yet.");
 }
 function fileToData(file) {
   return new Promise((resolve, reject) => {
